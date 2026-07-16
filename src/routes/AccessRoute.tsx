@@ -22,9 +22,7 @@ function AccessRoute({
 }: AccessRouteProps) {
   const location = useLocation();
 
-  const user = useAuthStore(
-    (state) => state.user,
-  );
+  const user = useAuthStore((state) => state.user);
 
   // 비로그인 사용자는 조회자 권한으로 공개 페이지에 접근합니다.
   // 로그인 사용자는 실제 사용자 역할로 접근 여부를 확인합니다.

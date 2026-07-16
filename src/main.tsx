@@ -2,6 +2,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
 
@@ -40,6 +41,14 @@ function showApp() {
           </BrowserRouter>
         </AuthProvider>
       </ThemeProvider>
+
+      {/* 개발 환경에서만 TanStack Query 상태 확인 도구를 표시합니다. */}
+      {import.meta.env.DEV && (
+        <ReactQueryDevtools
+          initialIsOpen={false}
+          buttonPosition="bottom-right"
+        />
+      )}
     </QueryClientProvider>,
   );
 }

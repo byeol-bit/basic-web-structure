@@ -162,6 +162,7 @@ function UserTable({
   );
 
   // TanStack Table에 검색, 정렬과 페이지 기능을 연결합니다.
+  // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
     data: users,
     columns,
