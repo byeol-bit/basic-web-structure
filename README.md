@@ -25,7 +25,6 @@
 - Access Token 자동 갱신
 - 사용자 역할별 페이지 접근 제어
 - 공통 API Client와 서버 데이터 캐시
-- Backend 없이 API 흐름을 검증하는 Mock 환경
 - TopNav와 접이식 Sidebar 기반 레이아웃
 - 라이트·다크 테마와 다국어 지원
 - 사용자 목록의 검색, 정렬과 페이지 이동
