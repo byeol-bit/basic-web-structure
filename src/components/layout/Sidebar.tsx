@@ -84,23 +84,24 @@ function Sidebar({
     ? t("sidebar.open")
     : t("sidebar.close");
 
-  // 현재 사용자 역할로 접근할 수 있는 주 메뉴만 남깁니다.
-  const visibleMenuItems = user
-    ? menuItems.filter((item) =>
-        canOpen(user.role, item.to),
-      )
-    : [];
+  // 로그인하지 않은 사용자는 조회자와 같은 주 메뉴를 표시합니다.
+  const visibleMenuItems =
+    menuItems.filter((item) =>
+      canOpen(user?.role, item.to),
+    );
 
-  // 현재 사용자 역할로 접근할 수 있는 안내 메뉴만 남깁니다.
-  const visibleGuideItems = user
-    ? guideItems.filter((item) =>
-        canOpen(user.role, item.to),
-      )
-    : [];
+  // 로그인하지 않은 사용자는 조회자와 같은 안내 메뉴를 표시합니다.
+  const visibleGuideItems =
+    guideItems.filter((item) =>
+      canOpen(user?.role, item.to),
+    );
 
-  const canOpenSettings = user
-    ? canOpen(user.role, "/settings")
-    : false;
+  // 설정 메뉴는 관리자처럼 권한이 있는 사용자에게만 표시합니다.
+  const canOpenSettings =
+    canOpen(
+      user?.role,
+      "/settings",
+    );
 
   return (
     <aside className="relative h-full min-h-0 border-r border-line bg-side text-side-text">

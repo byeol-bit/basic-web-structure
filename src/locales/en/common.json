@@ -28,7 +28,8 @@
     "logout": "Sign Out",
     "loggingOut": "Signing out",
     "accountMenu": "Account menu",
-    "profile": "Profile"
+    "profile": "Profile",
+    "guestMode": "Guest access"
   },
   "sidebar": {
     "open": "Open sidebar",

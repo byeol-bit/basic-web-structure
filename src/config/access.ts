@@ -10,6 +10,9 @@ export type AppPath =
   | "/structure"
   | "/libraries";
 
+  // 비로그인 사용자는 조회자와 같은 화면 접근 권한을 사용합니다.
+  const guestRole: UserRole = "viewer";
+
   // 사용자 역할별로 접근할 수 있는 화면을 정의합니다.
 const pathsByRole: Record<UserRole, readonly AppPath[]> = {
   administrator: [
@@ -39,8 +42,10 @@ const pathsByRole: Record<UserRole, readonly AppPath[]> = {
 };
 
 export function canOpen(
-  role: UserRole,
+  role: UserRole | null | undefined,
   path: AppPath,
 ): boolean {
-  return pathsByRole[role].includes(path);
+  const currentRole = role ?? guestRole;
+
+  return pathsByRole[currentRole].includes(path);
 }

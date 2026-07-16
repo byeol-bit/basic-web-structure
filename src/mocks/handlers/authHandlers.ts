@@ -83,12 +83,8 @@ function makeAuth(
   user: UserDto,
 ): AuthResponseDto {
   // 사용자와 발급 시간을 포함한 새로운 Access Token을 만듭니다.
-  accessToken =
-    `mock-access-token-${user.id}-${Date.now()}`;
-
-  accessTokenExpiresAt =
-    Date.now() + accessTokenLife;
-
+  accessToken = `mock-access-token-${user.id}-${Date.now()}`;
+  accessTokenExpiresAt = Date.now() + accessTokenLife;
   accessUserId = user.id;
 
   return {
@@ -101,15 +97,9 @@ function makeAuth(
 function isAccessTokenValid(
   request: Request,
 ): boolean {
-  const authorization =
-    request.headers.get("Authorization");
-
-  const hasValidToken =
-    authorization ===
-    `Bearer ${accessToken}`;
-
-  const isNotExpired =
-    Date.now() < accessTokenExpiresAt;
+  const authorization = request.headers.get("Authorization");
+  const hasValidToken = authorization === `Bearer ${accessToken}`;
+  const isNotExpired = Date.now() < accessTokenExpiresAt;
 
   return hasValidToken && isNotExpired;
 }
@@ -157,8 +147,7 @@ const login = http.post(
       );
     }
 
-    const refreshToken =
-      makeRefreshToken(user);
+    const refreshToken = makeRefreshToken(user);
 
     return HttpResponse.json(
       makeAuth(user),
@@ -181,11 +170,8 @@ const refresh = http.post(
   async ({ cookies }) => {
     await delay(300);
 
-    const refreshToken =
-      cookies[refreshCookieName];
-
-    const user =
-      findRefreshUser(refreshToken);
+    const refreshToken = cookies[refreshCookieName];
+    const user = findRefreshUser(refreshToken);
 
     // Refresh Token이 없거나 사용자가 비활성 상태이면 갱신을 거부합니다.
     if (!user) {

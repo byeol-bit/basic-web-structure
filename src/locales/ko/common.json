@@ -28,7 +28,8 @@
     "logout": "로그아웃",
     "loggingOut": "로그아웃 중",
     "accountMenu": "계정 메뉴",
-    "profile": "프로필"
+    "profile": "프로필",
+    "guestMode": "조회자 모드"
   },
   "sidebar": {
     "open": "사이드바 열기",

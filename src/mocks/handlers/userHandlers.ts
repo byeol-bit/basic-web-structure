@@ -13,8 +13,7 @@ const getUsers = http.get(
   async ({ request }) => {
     await delay(500);
 
-    const user =
-      getAccessUser(request);
+    const user = getAccessUser(request);
 
     // Token이 없거나 만료되었으면 인증 갱신 대상으로 처리합니다.
     if (!user) {

@@ -4,12 +4,16 @@ import { useQueryClient } from "@tanstack/react-query";
 import {
   ChevronDown,
   LoaderCircle,
+  LogIn,
   LogOut,
   Settings,
   UserRound,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router";
+import {
+  useLocation,
+  useNavigate,
+} from "react-router";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -28,6 +32,7 @@ import { canOpen } from "@/config/access";
 // 현재 사용자 정보와 계정 관련 메뉴를 표시합니다.
 function UserMenu() {
   const { t } = useTranslation();
+  const location = useLocation();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
@@ -54,9 +59,49 @@ function UserMenu() {
     ? t("auth.loggingOut")
     : t("auth.logout");
 
+  // 로그인하지 않은 사용자는 계정 정보 대신 로그인 진입 버튼을 표시합니다.
+  if (!user) {
+    return (
+      <button
+        type="button"
+        className="group flex min-h-12 items-center gap-3 rounded-xl border border-transparent px-3 py-2 text-left outline-none transition-all hover:border-line hover:bg-panel-soft focus-visible:border-brand focus-visible:ring-2 focus-visible:ring-brand/20"
+        aria-label={t("auth.login")}
+        onClick={openLogin}
+      >
+        <div className="min-w-24 text-right">
+          <p className="text-sm font-semibold leading-5 text-main">
+            {t("auth.login")}
+          </p>
+
+          <p className="text-xs leading-4 text-sub">
+            {t("auth.guestMode")}
+          </p>
+        </div>
+
+        <Avatar
+          size="lg"
+          className="ring-2 ring-line"
+        >
+          <AvatarFallback className="bg-panel-soft text-brand">
+            <LogIn className="size-5" />
+          </AvatarFallback>
+        </Avatar>
+      </button>
+    );
+  }
+
   // 시스템 설정 페이지로 이동합니다.
   function openSettings() {
     navigate("/settings");
+  }
+
+  // 현재 Guest 위치를 저장하고 로그인 화면으로 이동합니다.
+  function openLogin() {
+    navigate("/login", {
+      state: {
+        from: location,
+      },
+    });
   }
 
   // 서버와 클라이언트에 저장된 인증 정보를 제거합니다.
@@ -77,7 +122,7 @@ function UserMenu() {
       // 메모리의 Access Token과 사용자 정보를 제거합니다.
       clearAuth();
 
-      navigate("/login", {
+      navigate("/", {
         replace: true,
       });
     } catch (error) {

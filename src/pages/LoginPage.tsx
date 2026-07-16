@@ -1,8 +1,5 @@
 import { LoaderCircle, LockKeyhole } from "lucide-react";
 import {
-  useCallback,
-  useEffect,
-  useRef,
   useState,
   type FormEvent,
 } from "react";
@@ -45,9 +42,6 @@ function LoginPage() {
   const [errorText, setErrorText] = useState("");
   const [isBusy, setIsBusy] = useState(false);
 
-  // 자동 로그인이 여러 번 실행되지 않도록 기록합니다.
-  const didAutoLogin = useRef(false);
-
   const isAuthenticated = useAuthStore(
     (state) => state.isAuthenticated,
   );
@@ -67,60 +61,31 @@ function LoginPage() {
     `${from?.search ?? ""}` +
     `${from?.hash ?? ""}`;
 
-  const canAutoLogin =
-    import.meta.env.DEV &&
-    import.meta.env.VITE_AUTO_ADMIN_LOGIN === "true";
-
   // 입력한 계정 정보를 서버로 보내고 인증 정보를 저장합니다.
-  const runLogin = useCallback(
-    async (request: LoginRequestDto) => {
-      setIsBusy(true);
-      setErrorText("");
+  async function runLogin(
+    request: LoginRequestDto,
+  ) {
+    setIsBusy(true);
+    setErrorText("");
 
-      try {
-        const auth =
-          await AuthService.login(request);
+    try {
+      const auth =
+        await AuthService.login(request);
 
-        setAuth(auth);
+      setAuth(auth);
 
-        navigate(movePath, {
-          replace: true,
-        });
-      } catch {
-        setErrorText(
-          t("auth.loginError"),
-        );
-      } finally {
-        setIsBusy(false);
-      }
-    },
-    [
-      movePath,
-      navigate,
-      setAuth,
-      t,
-    ],
-  );
-
-  useEffect(() => {
-    // 개발 환경에서 설정값이 켜져 있으면 Mock 관리자로 자동 로그인합니다.
-    if (
-      !canAutoLogin ||
-      didAutoLogin.current
-    ) {
-      return;
+      // Guest 상태에서 보고 있던 기존 화면으로 돌아갑니다.
+      navigate(movePath, {
+        replace: true,
+      });
+    } catch {
+      setErrorText(
+        t("auth.loginError"),
+      );
+    } finally {
+      setIsBusy(false);
     }
-
-    didAutoLogin.current = true;
-
-    void runLogin({
-      id: "admin",
-      password: "1234",
-    });
-  }, [
-    canAutoLogin,
-    runLogin,
-  ]);
+  }
 
   // 로그인 Form에 입력된 계정 정보를 전송합니다.
   function submitLogin(
@@ -132,10 +97,7 @@ function LoginPage() {
       return;
     }
 
-    void runLogin({
-      id,
-      password,
-    });
+    void runLogin({id, password});
   }
 
   // 로그인한 사용자가 로그인 화면에 접근하면 Dashboard로 이동합니다.
@@ -202,7 +164,7 @@ function LoginPage() {
                 value={id}
                 placeholder={t("auth.idPlaceholder")}
                 autoComplete="username"
-                autoFocus={!canAutoLogin}
+                autoFocus
                 disabled={isBusy}
                 aria-invalid={Boolean(errorText)}
                 onChange={(event) => {
@@ -238,12 +200,6 @@ function LoginPage() {
             {errorText && (
               <p className="rounded-lg border border-destructive/20 bg-destructive/10 px-3.5 py-3 text-sm font-medium leading-5 text-destructive">
                 {errorText}
-              </p>
-            )}
-
-            {canAutoLogin && isBusy && (
-              <p className="text-center text-xs leading-5 text-sub">
-                {t("auth.autoLogin")}
               </p>
             )}
 
