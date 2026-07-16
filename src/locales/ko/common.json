@@ -1,0 +1,216 @@
+{
+  "app": {
+    "name": "기본 대시보드",
+    "description": "관리 플랫폼"
+  },
+  "language": {
+    "select": "언어 선택",
+    "korean": "한국어",
+    "english": "영어"
+  },
+  "theme": {
+    "light": "라이트",
+    "dark": "다크",
+    "changeToLight": "라이트 모드로 변경",
+    "changeToDark": "다크 모드로 변경"
+  },
+  "auth": {
+    "title": "로그인",
+    "description": "시스템에 접근하려면 계정 정보를 입력하세요.",
+    "id": "아이디",
+    "idPlaceholder": "아이디 입력",
+    "password": "비밀번호",
+    "passwordPlaceholder": "비밀번호 입력",
+    "login": "로그인",
+    "loggingIn": "로그인 중",
+    "loginError": "아이디 또는 비밀번호를 확인하세요.",
+    "autoLogin": "개발 환경 관리자 자동 로그인을 진행하고 있습니다.",
+    "logout": "로그아웃",
+    "loggingOut": "로그아웃 중",
+    "accountMenu": "계정 메뉴",
+    "profile": "프로필"
+  },
+  "sidebar": {
+    "open": "사이드바 열기",
+    "close": "사이드바 닫기"
+  },
+  "menu": {
+    "title_1": "주 메뉴",
+    "title_2": "참고 메뉴",
+    "dashboard": "대시보드",
+    "monitor": "모니터",
+    "history": "이력",
+    "settings": "설정",
+    "structure": "프로젝트 구조",
+    "libraries": "라이브러리",
+    "users": "사용자"
+  },
+  "user": {
+    "administrator": "관리자",
+    "systemManager": "시스템 관리자"
+  },
+  "users": {
+    "category": "시스템 관리",
+    "title": "사용자 관리",
+    "description": "시스템 사용자의 역할과 사용 상태를 확인합니다.",
+    "listTitle": "사용자 목록",
+    "listDescription": "현재 시스템에 등록된 사용자입니다.",
+    "loading": "사용자 목록을 불러오고 있습니다.",
+    "error": "사용자 목록을 불러오지 못했습니다.",
+    "retry": "다시 조회",
+    "columns": {
+      "id": "사용자 ID",
+      "name": "이름",
+      "userId": "계정",
+      "role": "역할",
+      "status": "상태",
+      "createdAt": "등록 일시"
+    },
+    "roles": {
+      "administrator": "관리자",
+      "operator": "운영자",
+      "viewer": "조회자"
+    },
+    "status": {
+      "active": "사용",
+      "inactive": "미사용"
+    },
+    "empty": "표시할 사용자가 없습니다.",
+    "searchPlaceholder": "이름 또는 계정 검색",
+    "resultCount": "총 {{count}}건",
+    "page": "{{current}} / {{total}} 페이지",
+    "previous": "이전",
+    "next": "다음"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "페이지를 찾을 수 없습니다.",
+    "description": "요청한 주소가 없거나 이동되었을 수 있습니다.",
+    "backHome": "대시보드로 이동"
+  },
+  "forbidden": {
+    "code": "403",
+    "title": "접근 권한이 없습니다.",
+    "description": "현재 계정은 요청한 페이지를 이용할 수 없습니다.",
+    "backHome": "대시보드로 이동"
+  },
+  "dashboard": {
+    "category": "개요",
+    "title": "대시보드",
+    "description": "시스템의 주요 운영 상태를 한눈에 확인합니다.",
+    "totalUsers": "전체 사용자",
+    "activeDevices": "활성 장치",
+    "openAlerts": "미처리 알람",
+    "operationTitle": "운영 현황",
+    "emptyMessage": "차트와 테이블이 이 영역에 추가될 예정입니다.",
+    "healthTitle": "시스템 상태",
+    "healthHealthy": "정상",
+    "healthUnhealthy": "비정상",
+    "healthLoading": "확인 중",
+    "healthError": "조회 실패"
+  },
+  "monitor": {
+    "category": "실시간 상태",
+    "title": "모니터",
+    "description": "실시간 운영 상태를 확인하는 화면입니다.",
+    "emptyMessage": "모니터링 기능이 이 영역에 추가될 예정입니다."
+  },
+  "history": {
+    "category": "기록",
+    "title": "이력",
+    "description": "시스템의 과거 작업 이력을 확인하는 화면입니다.",
+    "emptyMessage": "이력 조회 기능이 이 영역에 추가될 예정입니다."
+  },
+  "settings": {
+    "category": "환경설정",
+    "title": "설정",
+    "description": "시스템의 기본 설정을 관리하는 화면입니다.",
+    "emptyMessage": "설정 기능이 이 영역에 추가될 예정입니다."
+  },
+  "structure": {
+    "category": "개발 가이드",
+    "title": "프로젝트 구조",
+    "description": "프로젝트 폴더와 각 계층의 책임, 인증 및 권한 처리 위치를 한눈에 확인합니다.",
+    "treeTitle": "현재 폴더 구조",
+    "treeDescription": "폴더 옆 주석은 처음 보는 개발자가 역할을 빠르게 파악하기 위한 요약입니다.",
+    "roleTitle": "폴더별 역할",
+    "roleDescription": "각 폴더를 분리한 이유와 코드가 들어가야 하는 경계를 설명합니다.",
+    "flowTitle": "기본 개발 흐름",
+    "flowDescription": "화면 요청이 Backend API까지 전달되는 기본 순서입니다.",
+    "folders": {
+      "api": "Axios의 baseURL, timeout, 공통 Header와 인증 Interceptor를 관리합니다. Access Token 첨부와 401 발생 시 Token 갱신 및 요청 재시도를 한곳에서 처리합니다.",
+      "assets": "화면에서 import해 사용하는 이미지와 정적 파일을 관리합니다. 컴포넌트 코드와 리소스를 분리해 파일 교체와 재사용 위치를 쉽게 찾을 수 있게 합니다.",
+      "components": "재사용 가능한 화면 조각을 관리합니다. common은 AuthProvider 같은 앱 공통 요소, layout은 전체 배치, ui는 shadcn/ui 원본, users는 사용자와 계정 메뉴 전용 요소입니다.",
+      "config": "역할별 허용 경로처럼 앱 전체가 공유하는 정책을 관리합니다. access.ts를 Sidebar와 AccessRoute가 함께 사용해 메뉴 표시와 직접 URL 접근 기준이 달라지지 않게 합니다.",
+      "hooks": "useHealth와 useUsers처럼 TanStack Query 및 React 상태를 화면이 사용하기 좋은 형태로 제공합니다. HTTP를 직접 호출하지 않고 Service에 위임해 Page가 조회 구현을 몰라도 되게 합니다.",
+      "locales": "한국어와 영어 문구를 언어별 JSON으로 관리합니다. 컴포넌트에 문구를 직접 작성하지 않아 언어 추가와 문구 변경이 화면 코드에 영향을 주지 않게 합니다.",
+      "mocks": "실제 Backend와 같은 URL 및 응답 형태를 사용하는 MSW Handler를 관리합니다. 로그인, Token 갱신, 로그아웃, 역할별 권한과 Token 만료 상황을 Backend 없이 검증합니다.",
+      "pages": "Route에 연결되는 화면 단위 컴포넌트를 관리합니다. LoginPage, ForbiddenPage처럼 인증 및 권한 결과 화면도 이 계층에서 구성합니다.",
+      "routes": "URL과 Page 연결뿐 아니라 ProtectedRoute의 로그인 검사와 AccessRoute의 역할별 접근 검사를 관리합니다. 권한이 없으면 403, 등록되지 않은 주소는 404 화면으로 보냅니다.",
+      "services": "HealthService, UserService, AuthService처럼 기능별 API 주소와 요청 및 응답 처리를 관리합니다. 인증 화면도 Axios를 직접 사용하지 않고 AuthService에 위임합니다.",
+      "stores": "Theme와 현재 사용자 인증 상태처럼 여러 화면이 공유하는 클라이언트 상태를 Zustand로 관리합니다. Access Token은 브라우저 저장소가 아닌 메모리에 두고 서버 응답 캐시는 TanStack Query가 담당합니다.",
+      "styles": "Tailwind 기반 전역 스타일, Light/Dark Theme CSS 변수와 기본 글꼴을 관리합니다. 화면별 색상 값을 직접 작성하지 않고 공통 Theme를 따르게 합니다.",
+      "types": "UserDto, HealthDto, AuthDto처럼 API 요청과 응답 및 사용자 역할을 나타내는 TypeScript 계약을 관리합니다. 인증, 권한, Service와 UI가 같은 데이터 구조를 사용하게 합니다.",
+      "utils": "cn과 formatDateTime처럼 특정 기능이나 화면에 속하지 않는 작은 순수 함수를 관리합니다. 한 번만 사용하는 로직은 넣지 않고 실제 재사용되는 함수만 둡니다."
+    },
+    "flow": {
+      "page": "화면을 구성하고 Hook을 사용합니다.",
+      "hook": "화면 로직과 TanStack Query를 연결합니다.",
+      "service": "응답 가공과 공통 업무 규칙을 처리합니다.",
+      "api": "Axios로 Backend 요청을 보내며 Access Token 첨부와 401 응답의 자동 갱신 및 재시도를 처리합니다."
+    }
+  },
+  "libraries": {
+    "category": "개발 가이드",
+    "title": "사용 라이브러리",
+    "description": "현재 프로젝트에서 사용하는 라이브러리와 앞으로 도입할 기술의 역할을 확인합니다.",
+    "status": {
+      "current": "사용 중",
+      "development": "개발 전용",
+      "planned": "도입 예정"
+    },
+    "groups": {
+      "core": {
+        "title": "Frontend 기반",
+        "description": "프로젝트 실행, 개발과 빌드의 중심 기술입니다."
+      },
+      "ui": {
+        "title": "UI와 스타일",
+        "description": "화면 디자인과 공통 UI를 구성하는 라이브러리입니다."
+      },
+      "data": {
+        "title": "상태와 데이터",
+        "description": "클라이언트 상태, 서버 조회와 API 통신을 담당합니다."
+      },
+      "app": {
+        "title": "화면 구성 지원",
+        "description": "경로, 다국어와 기본 글꼴을 관리합니다."
+      },
+      "planned": {
+        "title": "도입 예정",
+        "description": "실제 기능 요구사항에 맞춰 이후 적용할 라이브러리입니다."
+      }
+    },
+    "items": {
+      "react": "컴포넌트 기반으로 화면과 상태 변화를 구성합니다.",
+      "typescript": "Props, API 응답과 상태의 데이터 계약을 검사합니다.",
+      "vite": "개발 서버와 Production Build를 빠르게 실행합니다.",
+      "tailwind": "Utility Class와 CSS Variable 기반 Theme를 구성합니다.",
+      "shadcn": "Avatar, Dropdown Menu, Select, Card처럼 접근성을 갖춘 공통 UI를 프로젝트가 직접 소유하고 필요한 디자인에 맞게 조정합니다.",
+      "lucide": "Theme와 Sidebar 등에서 일관된 아이콘을 제공합니다.",
+      "classTools": "조건부 Tailwind Class를 조합하고 충돌을 정리합니다.",
+      "cva": "공통 컴포넌트의 Variant별 스타일을 타입과 함께 관리합니다.",
+      "zustand": "Theme와 함께 Access Token, 현재 사용자, 인증 확인 상태를 메모리에서 관리합니다.",
+      "query": "서버 조회 결과의 캐시, Loading과 Error 상태를 관리하며 로그아웃 또는 인증 만료 시 이전 사용자 캐시를 제거합니다.",
+      "axios": "공통 설정으로 Backend 요청을 처리하고 Access Token Header 추가, 401 응답 시 Token 갱신과 원래 요청 재시도를 담당합니다.",
+      "msw": "로그인, Token 갱신, 로그아웃과 역할별 권한 API를 Mock으로 제공해 Backend 없이 인증 흐름과 Token 만료를 검증합니다.",
+      "router": "URL과 Page 및 공통 Layout을 연결하고 ProtectedRoute와 AccessRoute로 로그인 및 역할별 화면 접근을 제어합니다.",
+      "i18n": "한국어와 영어 문구 및 실행 중 언어 변경을 관리합니다.",
+      "geist": "외부 CDN 없이 프로젝트 기본 글꼴을 제공합니다.",
+      "animate": "shadcn/ui 컴포넌트에 필요한 Tailwind 애니메이션을 제공합니다.",
+      "table": "사용자 목록의 정렬, 필터와 페이지 상태를 관리합니다.",
+      "signalr": "실시간 알람과 상태 변경 이벤트를 수신할 예정입니다.",
+      "echarts": "Dashboard의 차트와 시각화를 구성할 예정입니다."
+    }
+  }
+}

@@ -1,0 +1,69 @@
+/*
+ * CSS 변수와 Tailwind 색상 이름을 연결합니다.
+ */
+@theme inline {
+  --color-page: var(--app-page);
+  --color-panel: var(--app-panel);
+  --color-panel-soft: var(--app-panel-soft);
+
+  --color-main: var(--app-main);
+  --color-sub: var(--app-sub);
+  --color-line: var(--app-line);
+
+  --color-brand: var(--app-brand);
+  --color-brand-hover: var(--app-brand-hover);
+  --color-brand-soft: var(--app-brand-soft);
+
+  --color-side: var(--app-side);
+  --color-side-hover: var(--app-side-hover);
+  --color-side-text: var(--app-side-text);
+  --color-side-sub: var(--app-side-sub);
+}
+
+/*
+ * 기본 Light 테마입니다.
+ * 화면의 대부분을 흰색과 밝은 회색으로 구성합니다.
+ */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  --app-page: #f8fafc;
+  --app-panel: #ffffff;
+  --app-panel-soft: #f1f5f9;
+
+  --app-main: #0f172a;
+  --app-sub: #64748b;
+  --app-line: #e2e8f0;
+
+  --app-brand: #059669;
+  --app-brand-hover: #047857;
+  --app-brand-soft: #ecfdf5;
+
+  --app-side: #ffffff;
+  --app-side-hover: #f1f5f9;
+  --app-side-text: #334155;
+  --app-side-sub: #94a3b8;
+}
+
+/* 사용자가 Dark 모드를 선택했을 때 적용됩니다. */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --app-page: #0f172a;
+  --app-panel: #111827;
+  --app-panel-soft: #1e293b;
+
+  --app-main: #f8fafc;
+  --app-sub: #94a3b8;
+  --app-line: #334155;
+
+  --app-brand: #10b981;
+  --app-brand-hover: #34d399;
+  --app-brand-soft: #064e3b;
+
+  --app-side: #111827;
+  --app-side-hover: #1e293b;
+  --app-side-text: #e2e8f0;
+  --app-side-sub: #64748b;
+}

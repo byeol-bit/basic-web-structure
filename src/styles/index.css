@@ -1,0 +1,155 @@
+/* Tailwind CSS의 전체 기능을 불러옵니다. */
+@import "tailwindcss";
+
+/* 프로젝트에서 관리하는 Light/Dark 테마를 불러옵니다. */
+@import "./theme.css";
+
+/* shadcn/ui의 애니메이션과 공통 Tailwind 기능을 불러옵니다. */
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Nova Preset에서 사용하는 기본 글꼴을 불러옵니다. */
+@import "@fontsource-variable/geist";
+
+/*
+ * 현재 ThemeProvider는 .dark 클래스가 아니라
+ * data-theme 속성을 사용하므로 dark Variant 기준을 변경합니다.
+ */
+@custom-variant dark (&:is([data-theme="dark"] *));
+
+/*
+ * shadcn/ui에서 사용하는 의미 기반 색상 이름을
+ * 실제 CSS 변수와 연결합니다.
+ */
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: "Geist Variable", sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+ * shadcn/ui의 색상을 기존 프로젝트 테마에 연결합니다.
+ * 실제 Light/Dark 색상은 theme.css의 --app-* 변수가 결정합니다.
+ */
+:root {
+  --background: var(--app-page);
+  --foreground: var(--app-main);
+
+  --card: var(--app-panel);
+  --card-foreground: var(--app-main);
+
+  --popover: var(--app-panel);
+  --popover-foreground: var(--app-main);
+
+  --primary: var(--app-brand);
+  --primary-foreground: #ffffff;
+
+  --secondary: var(--app-panel-soft);
+  --secondary-foreground: var(--app-main);
+
+  --muted: var(--app-panel-soft);
+  --muted-foreground: var(--app-sub);
+
+  --accent: var(--app-side-hover);
+  --accent-foreground: var(--app-side-text);
+
+  --destructive: #dc2626;
+  --border: var(--app-line);
+  --input: var(--app-line);
+  --ring: var(--app-brand);
+
+  /* 차트용 기본 색상입니다. */
+  --chart-1: #059669;
+  --chart-2: #0ea5e9;
+  --chart-3: #8b5cf6;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+
+  /* Nova Preset의 기본 Radius를 유지합니다. */
+  --radius: 0.625rem;
+
+  /* shadcn Sidebar 색상을 기존 Sidebar 테마에 연결합니다. */
+  --sidebar: var(--app-side);
+  --sidebar-foreground: var(--app-side-text);
+  --sidebar-primary: var(--app-brand);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--app-side-hover);
+  --sidebar-accent-foreground: var(--app-side-text);
+  --sidebar-border: var(--app-line);
+  --sidebar-ring: var(--app-brand);
+}
+
+/* 앱이 브라우저 전체 높이를 사용하도록 설정합니다. */
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+/* 브라우저 기본 여백을 제거합니다. */
+body {
+  margin: 0;
+}
+
+/* 전체 Element에 공통 Border와 Focus 색상을 적용합니다. */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    @apply font-sans;
+  }
+}

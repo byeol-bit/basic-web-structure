@@ -1,0 +1,7 @@
+root = true
+
+[*]
+# 실제 Tab 문자가 아니라 공백 2칸을 사용합니다.
+indent_style = space
+indent_size = 2
+tab_width = 2

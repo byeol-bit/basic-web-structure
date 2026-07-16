@@ -1,0 +1,216 @@
+{
+  "app": {
+    "name": "Basic Dashboard",
+    "description": "Management Platform"
+  },
+  "language": {
+    "select": "Select language",
+    "korean": "Korean",
+    "english": "English"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "changeToLight": "Switch to light mode",
+    "changeToDark": "Switch to dark mode"
+  },
+  "auth": {
+    "title": "Sign In",
+    "description": "Enter your account information to access the system.",
+    "id": "User ID",
+    "idPlaceholder": "Enter your user ID",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "login": "Sign In",
+    "loggingIn": "Signing in",
+    "loginError": "Check your user ID and password.",
+    "autoLogin": "Signing in automatically as the development administrator.",
+    "logout": "Sign Out",
+    "loggingOut": "Signing out",
+    "accountMenu": "Account menu",
+    "profile": "Profile"
+  },
+  "sidebar": {
+    "open": "Open sidebar",
+    "close": "Close sidebar"
+  },
+  "menu": {
+    "title_1": "MAIN MENU",
+    "title_2": "REFERENCE MENU",
+    "dashboard": "Dashboard",
+    "monitor": "Monitor",
+    "history": "History",
+    "settings": "Settings",
+    "structure": "Project Structure",
+    "libraries": "Libraries",
+    "users": "Users"
+  },
+  "user": {
+    "administrator": "Administrator",
+    "systemManager": "System Manager"
+  },
+  "users": {
+    "category": "System Management",
+    "title": "User Management",
+    "description": "View user roles and account status.",
+    "listTitle": "User List",
+    "listDescription": "Users currently registered in the system.",
+    "loading": "Loading users.",
+    "error": "Failed to load users.",
+    "retry": "Retry",
+    "columns": {
+      "id": "User ID",
+      "name": "Name",
+      "userId": "User ID",
+      "role": "Role",
+      "status": "Status",
+      "createdAt": "Created At"
+    },
+    "roles": {
+      "administrator": "Administrator",
+      "operator": "Operator",
+      "viewer": "Viewer"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "empty": "No users found.",
+    "searchPlaceholder": "Search by name or user ID",
+    "resultCount": "{{count}} results",
+    "page": "Page {{current}} of {{total}}",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Page not found.",
+    "description": "The requested address may not exist or may have moved.",
+    "backHome": "Go to dashboard"
+  },
+  "forbidden": {
+    "code": "403",
+    "title": "Access denied.",
+    "description": "Your account does not have permission to view this page.",
+    "backHome": "Go to dashboard"
+  },
+  "dashboard": {
+    "category": "Overview",
+    "title": "Dashboard",
+    "description": "View the main operating status of the system.",
+    "totalUsers": "Total Users",
+    "activeDevices": "Active Devices",
+    "openAlerts": "Open Alerts",
+    "operationTitle": "Operation Summary",
+    "emptyMessage": "Chart and table content will be added here.",
+    "healthTitle": "System Health",
+    "healthHealthy": "Healthy",
+    "healthUnhealthy": "Unhealthy",
+    "healthLoading": "Checking",
+    "healthError": "Failed"
+  },
+  "monitor": {
+    "category": "Live Status",
+    "title": "Monitor",
+    "description": "View the current operating status of the system.",
+    "emptyMessage": "Monitor content will be added here."
+  },
+  "history": {
+    "category": "Records",
+    "title": "History",
+    "description": "View the past operation history of the system.",
+    "emptyMessage": "History content will be added here."
+  },
+  "settings": {
+    "category": "Configuration",
+    "title": "Settings",
+    "description": "Manage the basic system settings.",
+    "emptyMessage": "Settings content will be added here."
+  },
+  "structure": {
+    "category": "Development Guide",
+    "title": "Project Structure",
+    "description": "View the project folders, layer responsibilities, and the location of authentication and access control logic.",
+    "treeTitle": "Current Folder Structure",
+    "treeDescription": "The comments beside each folder provide a quick map for developers seeing the project for the first time.",
+    "roleTitle": "Folder Responsibilities",
+    "roleDescription": "These descriptions explain why each folder is separated and define where code should belong.",
+    "flowTitle": "Development Flow",
+    "flowDescription": "This is the basic path from a page request to the Backend API.",
+    "folders": {
+      "api": "Manages Axios baseURL, timeout, common headers, and authentication interceptors. It attaches access tokens and handles token refresh and request retry after a 401 response.",
+      "assets": "Stores images and static files imported by the interface. Separating resources from components makes replacements and reuse locations easier to find.",
+      "components": "Stores reusable UI pieces. common contains app-wide elements such as AuthProvider, layout defines the shell, ui owns shadcn/ui source, and users contains user and account menu components.",
+      "config": "Stores shared application policies such as role-based allowed paths. access.ts is shared by the Sidebar and AccessRoute so menu visibility and direct URL access follow the same rule.",
+      "hooks": "Exposes TanStack Query and React state in a form pages can consume, such as useHealth and useUsers. Hooks delegate HTTP work to services so pages do not know request details.",
+      "locales": "Stores Korean and English text in language-specific JSON files. UI text stays out of components so adding a language or changing wording does not change screen code.",
+      "mocks": "Stores MSW handlers with the same URLs and response shapes as the real Backend. Login, token refresh, logout, role access, and token expiration can be tested without a server.",
+      "pages": "Stores route-level screen components. Authentication and access result pages such as LoginPage and ForbiddenPage are also composed in this layer.",
+      "routes": "Manages URL-to-page connections, login checks in ProtectedRoute, and role checks in AccessRoute. Unauthorized access goes to 403 and unknown addresses go to 404.",
+      "services": "Stores feature API calls through modules such as HealthService, UserService, and AuthService. Authentication screens delegate HTTP work to AuthService instead of using Axios directly.",
+      "stores": "Uses Zustand for shared client state such as the theme and current authentication. Access tokens remain in memory instead of browser storage, while TanStack Query owns server response caches.",
+      "styles": "Stores global Tailwind styles, Light/Dark Theme variables, and the base font. Screens use shared theme values instead of hard-coded colors.",
+      "types": "Stores TypeScript contracts such as UserDto, HealthDto, and AuthDto for API requests, responses, and user roles. Authentication, access control, services, and UI share the same data shapes.",
+      "utils": "Stores small pure functions that do not belong to a feature or screen, such as cn and formatDateTime. Only genuinely reused functions belong here."
+    },
+    "flow": {
+      "page": "Builds the screen and uses hooks.",
+      "hook": "Connects screen logic and TanStack Query.",
+      "service": "Handles response mapping and shared business rules.",
+      "api": "Uses Axios for Backend requests, attaches access tokens, and refreshes authentication before retrying a request after a 401 response."
+    }
+  },
+  "libraries": {
+    "category": "Development Guide",
+    "title": "Project Libraries",
+    "description": "View the libraries currently used by the project and the technologies planned for later.",
+    "status": {
+      "current": "In Use",
+      "development": "Development",
+      "planned": "Planned"
+    },
+    "groups": {
+      "core": {
+        "title": "Frontend Foundation",
+        "description": "Core technologies for running, developing, and building the project."
+      },
+      "ui": {
+        "title": "UI and Styling",
+        "description": "Libraries used to build the visual design and shared UI."
+      },
+      "data": {
+        "title": "State and Data",
+        "description": "Libraries for client state, server data, and API communication."
+      },
+      "app": {
+        "title": "Application Support",
+        "description": "Libraries for routing, translations, and the base font."
+      },
+      "planned": {
+        "title": "Planned Libraries",
+        "description": "Libraries to add when the related feature requirements are confirmed."
+      }
+    },
+    "items": {
+      "react": "Builds screens and state changes with reusable components.",
+      "typescript": "Checks data contracts for props, API responses, and state.",
+      "vite": "Runs the development server and Production Build quickly.",
+      "tailwind": "Builds utility styles and CSS Variable based themes.",
+      "shadcn": "Provides accessible project-owned UI such as Avatar, Dropdown Menu, Select, and Card that can be adjusted to the product design.",
+      "lucide": "Provides consistent icons for the theme, sidebar, and other UI.",
+      "classTools": "Combines conditional Tailwind classes and resolves conflicts.",
+      "cva": "Manages typed style variants for shared components.",
+      "zustand": "Keeps the theme, access token, current user, and authentication readiness in memory.",
+      "query": "Manages server cache, loading, and error states, and clears data from the previous user after logout or session expiration.",
+      "axios": "Handles Backend requests, adds the access token header, refreshes authentication after a 401 response, and retries the original request.",
+      "msw": "Mocks login, token refresh, logout, and role-based APIs so authentication flow and token expiration can be tested without a Backend.",
+      "router": "Connects URLs, pages, and the shared layout while ProtectedRoute and AccessRoute enforce login and role-based screen access.",
+      "i18n": "Manages Korean and English text and runtime language changes.",
+      "geist": "Provides the project font without an external CDN.",
+      "animate": "Provides Tailwind animations required by shadcn/ui components.",
+      "table": "Manages sorting, filtering, and pagination for the user list.",
+      "signalr": "Will receive real-time alarms and state change events.",
+      "echarts": "Will build dashboard charts and visualizations."
+    }
+  }
+}
